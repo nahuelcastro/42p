@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matcastr <matcastr@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 17:57:58 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/16 18:22:06 by matcastr         ###   ########.fr       */
+/*   Created: 2023/11/16 18:24:08 by matcastr          #+#    #+#             */
+/*   Updated: 2023/11/16 18:48:47 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*#include<stdio.h>*/
 
-char	*ft_strupcase(char *str)
-{	
+char	*ft_strcapitalize(char *str)
+{
 	int		i;
+	int		flag_cap;
+	char	c;
 
 	i = 0;
+	flag_cap = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
+		c = str[i];
+		if (i == 0 && c >= 'a' && c <= 'z')
+			flag_cap = 1;
+		if (c >= 'a' && c <= 'z' && flag_cap)
+		{
 			str[i] = str[i] - 32;
+			flag_cap = 0;
+		}
+		if (c >= ' ' && c <= '/')
+			flag_cap = 1;
+		else
+			flag_cap = 0;
 		i++;
 	}
 	return (str);
@@ -28,9 +41,9 @@ char	*ft_strupcase(char *str)
 /*
 int	main(void)
 {
-	char s[] = "dfasada";
+	char s[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
 
-	printf("%s", ft_strupcase(s));
+	printf("%s", ft_strcapitalize(s));
 	return (0);
 }
 */
