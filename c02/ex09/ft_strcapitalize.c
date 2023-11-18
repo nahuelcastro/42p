@@ -6,11 +6,13 @@
 /*   By: matcastr <matcastr@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:24:08 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/16 18:48:47 by matcastr         ###   ########.fr       */
+/*   Updated: 2023/11/18 13:02:47 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include<stdio.h>*/
+/*
+#include<stdio.h>
+*/
 
 char	*ft_strcapitalize(char *str)
 {
@@ -30,8 +32,10 @@ char	*ft_strcapitalize(char *str)
 			str[i] = str[i] - 32;
 			flag_cap = 0;
 		}
-		if (c >= ' ' && c <= '/')
+		else if (c >= ' ' && c <= '/')
 			flag_cap = 1;
+		else if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] = str[i] + 32;
 		else
 			flag_cap = 0;
 		i++;
@@ -41,7 +45,7 @@ char	*ft_strcapitalize(char *str)
 /*
 int	main(void)
 {
-	char s[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+	char s[] = "sALut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
 
 	printf("%s", ft_strcapitalize(s));
 	return (0);
