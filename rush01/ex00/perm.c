@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	ft_store_comb(char *digits, char tab[24][5], int *index)
+void	ft_store_permutation(char *digits, char tab[24][5], int *index)
 {
 	char	a;
 	char	b;
@@ -27,6 +27,7 @@ void	ft_store_comb(char *digits, char tab[24][5], int *index)
 	d = digits[3];
 	if (a != b && a != c && a != d && b != c && b != d && c != d)
 	{
+//	    printf("%s", "guardo la permutacion \n");
 		tab[*index][0] = a;
 		tab[*index][1] = b;
 		tab[*index][2] = c;
@@ -48,8 +49,10 @@ char *ft_generate_digits()
     digits[4] = '\0';
 }
 
-void	ft_print_comb(char tab[24][5])
+void	ft_get_permutations(char tab[24][5])
 {
+    printf("%s", "empiezo a generar las permutaciones \n");
+
 	int	i;
     char	*digits;
 
@@ -66,7 +69,7 @@ void	ft_print_comb(char tab[24][5])
 				digits[3] = '1';
 				while (digits[3] <= '4')
 				{
-					ft_store_comb(digits, tab, &i);
+					ft_store_permutation(digits, tab, &i);
 					digits[3]++;
 				}
 				digits[2]++;
@@ -75,20 +78,24 @@ void	ft_print_comb(char tab[24][5])
 		}
 		digits[0]++;
 	}
+	printf("%s", "termino de generar las permutaciones \n");
 }
-/*
+
 int	main(void)
 {
 	char	tab[24][5];
 	int	j;
 
 	j = 0;
-	ft_print_comb(tab);
+//	ft_get_permutations(tab);
+
+	printf("%s", "antes de imprimir las permutaciones \n");
 	while (j < 24)
 	{
+		printf("%s", "imprimo la permutacion hdioafjfhas\n");
 		printf("tab[%d] = %s\n", j, tab[j]);
 		j++;
 	}
+	printf("%s", "termino de imprimir las permutaciones \n");
 	return (0);
 }
-+/

@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
 
 #define c 0
 #define f 1
@@ -35,6 +37,7 @@
 #define f3_right 28
 #define f4_right 30
 
+void   ft_get_permutations(char tab[24][5]);
 
 /*
 // ver cuantos tienen todos los anteriores menores
@@ -85,32 +88,106 @@ int	ft_is_valid(char *data, int **solution, int col, char *permutations[])
 }
 
 
-void	parse_data(char *data_parsed[], char *data)
+int ft_len_str(char *str)
 {
-	// transform from "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2" to [[][]]
+    int i;
+
+    i = 0;
+    while (str[i] != '\0')
+        i++;
+    return (i);
+}
+
+int ft_is_error(char *data)
+{
+    int i;
+    int len;
+
+    i = 0;
+    len = ft_len_str(data);
+    if (len != 31)
+    {
+        write(2, "Error | input must be 31 characters long\n", 42);
+        write(2, "   16 numbers and 15 spaces :)\n", 31);
+        return (1);
+    }
+    while (data[i] != '\0')
+    {
+        if (i % 2 == 0)
+        {
+            if (data[i] >= '1' && data[i] <= '4')
+                i++;
+            else
+            {
+                write(2, "Error | even positions must be a number between 1, 4\n", 53);
+                return (1);
+            }
+        }
+        else
+        {
+            if (data[i] == ' ')
+                i++;
+            else
+            {
+                write(2, "Error | odd positions must be a space\n", 39);
+                return (1);
+            }
+        }
+    }
+    return (0);
 }
 
 int rush(char *data)
 {
-	int	solution[] = {0, 0, 0, 0};
-	
-	printf("- %d", solution[0]);
+	int	*solution;
+    char permutations[24][5];
+
+	solution = (int *)malloc(4 * 4);
+	solution[0] = -1;
+	solution[1] = -1;
+	solution[2] = -1;
+	solution[3] = -1;
 
 	/*data is valid?*/
-	
-	/*transform data*/
+	if (ft_is_error(data))
+        return (0);
+
+    // get the permutations
+    ft_get_permutations(permutations);
+
+    // print tab permutations
+    int i;
+    int j;
+    i = 0;
+    j = 0;
+
+    while (i < 24)
+    {
+        while (j < 5)
+        {
+            write(1, &permutations[i][j], 4);
+            write(1, "\n", 1);
+            j++;
+        }
+        printf("\n");
+        j = 0;
+        i++;
+    }
+    printf("%s", "fin blucle");
+    free(solution);
 
 	/*init the backtracking*/
-	rush_bt(char *data, )
+//	rush_bt(char *data, )
 	
 	return(1);
 }
 
 void	ft_print_solution()
 {
-	printf("%s", "en teoria estamos imprimiendo la solucion")
+	printf("%s", "en teoria estamos imprimiendo la solucion");
 }
 
+/*
 int	rush_bt(char *data, int **solution, int col)
 {
 	int	success;
@@ -143,7 +220,7 @@ int	rush_bt(char *data, int **solution, int col)
 	//test validator
 	printf("%i",validator(2, "2143"));
 }
-
+*/
 	/*
 	 1. data contiene los 16 numeros separados por espacio
 	 2. necesitamos una funcion validator
