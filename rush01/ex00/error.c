@@ -6,7 +6,7 @@
 /*   By: hmalzac <hmalzac@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:02:37 by hmalzac           #+#    #+#             */
-/*   Updated: 2023/11/19 18:20:37 by hmalzac          ###   ########.fr       */
+/*   Updated: 2023/11/19 23:01:22 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_valid_char(char c, int index)
 			return (1);
 		else
 		{
-			display_error("Error | must be a number between 1 and 4\n");
+			display_error("Error\n");
 			return (0);
 		}
 	}
@@ -37,7 +37,7 @@ int	is_valid_char(char c, int index)
 			return (1);
 		else
 		{
-			display_error("Error | odd positions must be a space\n");
+			display_error("Error\n");
 			return (0);
 		}
 	}
@@ -47,8 +47,7 @@ int	is_valid_length(char *data)
 {
 	if (ft_len_str(data) != 31)
 	{
-		display_error("Error | input must be 31 characters long\n");
-		display_error("   16 numbers and 15 spaces :)\n");
+		display_error("Error\n");
 		return (0);
 	}
 	return (1);
