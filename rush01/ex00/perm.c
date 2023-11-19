@@ -6,7 +6,7 @@
 /*   By: hmalzac <hmalzac@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 20:00:06 by hmalzac           #+#    #+#             */
-/*   Updated: 2023/11/19 11:03:00 by hmalzac          ###   ########.fr       */
+/*   Updated: 2023/11/19 17:21:51 by hmalzac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,32 @@ void	ft_store_permutation(char *digits, char perm[24][5], int *index)
 	}
 }
 
-char *ft_generate_digits()
+char	*ft_generate_digits(void)
 {
-    char	*digits;
+	char	*digits;
 
-    digits = (char *)malloc(5);
-    digits[0] = '1';
-    digits[1] = '1';
-    digits[2] = '1';
-    digits[3] = '1';
-    digits[4] = '\0';
-
-    return (digits);
+	digits = (char *)malloc(5);
+	digits[0] = '1';
+	digits[1] = '1';
+	digits[2] = '1';
+	digits[3] = '1';
+	digits[4] = '\0';
+	return (digits);
 }
 
 void	ft_get_permutations(char perm[24][5])
 {
-	int	i;
-    char	*digits;
+	char	*digits;
 
-    digits = ft_generate_digits();
+	digits = ft_generate_digits();
+	ft_get_permutations_loop(perm, digits);
+	free(digits);
+}
+
+void	ft_get_permutations_loop(char perm[24][5], char *digits)
+{
+	int	i;
+
 	i = 0;
 	while (digits[0] <= '4')
 	{
@@ -77,7 +83,6 @@ void	ft_get_permutations(char perm[24][5])
 		}
 		digits[0]++;
 	}
-	free(digits);
 }
 /*
 int	main(void)

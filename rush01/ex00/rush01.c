@@ -6,7 +6,7 @@
 /*   By: matcastr <matcastr@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:45:48 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/18 22:29:17 by matcastr         ###   ########.fr       */
+/*   Updated: 2023/11/19 18:23:32 by hmalzac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,24 @@
 //#define f3_right 28
 //#define f4_right 30
 
-void   ft_get_permutations(char tab[24][5]);
-int	skyscrapper_bt(char *data, char permutations[24][5], int *solution, int col);
-int ft_is_error(char *data);
+void	ft_get_permutations(char tab[24][5]);
+int		skyscrapper_bt(char *data, char perms[24][5], int *solution, int col);
+int		ft_is_error(char *data);
 
-int rush(char *data)
+int	rush(char *data)
 {
-	int	*solution;
-    char permutations[24][5];
+	int		*solution;
+	char	permutations[24][5];
 
 	solution = (int *)malloc(4 * 4);
 	solution[0] = -1;
 	solution[1] = -1;
 	solution[2] = -1;
 	solution[3] = -1;
-
-	/*data is valid?*/
 	if (ft_is_error(data))
-        return (0);
-
-    // get the permutations
-    ft_get_permutations(permutations);
-
-    /*init the backtracking*/
-    skyscrapper_bt(data, permutations, solution, 0);
-
-    free(solution);
-	return(1);
+		return (0);
+	ft_get_permutations(permutations);
+	skyscrapper_bt(data, permutations, solution, 0);
+	free (solution);
+	return (1);
 }
