@@ -36,16 +36,25 @@ void	ft_store_comb(char *digits, char tab[24][5], int *index)
 	}
 }
 
+char *ft_generate_digits()
+{
+    char	*digits;
+
+    digits = (char *)malloc(5);
+    digits[0] = '1';
+    digits[1] = '1';
+    digits[2] = '1';
+    digits[3] = '1';
+    digits[4] = '\0';
+}
 
 void	ft_print_comb(char tab[24][5])
 {
-	char	*digits;
 	int	i;
+    char	*digits;
 
-	digits = (char *)malloc(5);
-	digits = "1111\0";
-	printf("&p", digits);
-//	digits = {'1', '1', '1', '1', '0'};
+    digits = ft_generate_digits();
+	i = 0;
 	while (digits[0] <= '4')
 	{
 		digits[1] = '1';
@@ -67,7 +76,7 @@ void	ft_print_comb(char tab[24][5])
 		digits[0]++;
 	}
 }
-
+/*
 int	main(void)
 {
 	char	tab[24][5];
@@ -82,3 +91,4 @@ int	main(void)
 	}
 	return (0);
 }
++/
