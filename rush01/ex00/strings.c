@@ -10,23 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strinvert(char *str) //TODO ROMPE TODO
+char	*ft_str_cpy_reverse(char *dest, char *src)
 {
-	int		i;
-	int		j;
-	char	aux;
+	int	i;
+	int	j;
 
 	i = 0;
-	j = 7;
-	while (i < j)
-	{
-		aux = str[i];
-		str[i] = str[j];
-		str[j] = aux;
+	j = 0;
+	while (src[i] != '\0')
 		i++;
-		j--;
+	i--; // Move back to the last character of the string
+
+	while (i >= 0)
+	{
+		dest[j] = src[i];
+		i--;
+		j++;
 	}
-	return (str);
+	dest[j] = '\0'; // Add the null terminator at the end
+	return (dest);
 }
 
 int	ft_len_str(char *str)

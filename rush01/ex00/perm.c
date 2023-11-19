@@ -49,15 +49,6 @@ char	*ft_generate_digits(void)
 	return (digits);
 }
 
-void	ft_get_permutations(char perm[24][5])
-{
-	char	*digits;
-
-	digits = ft_generate_digits();
-	ft_get_permutations_loop(perm, digits);
-	free(digits);
-}
-
 void	ft_get_permutations_loop(char perm[24][5], char *digits)
 {
 	int	i;
@@ -83,6 +74,15 @@ void	ft_get_permutations_loop(char perm[24][5], char *digits)
 		}
 		digits[0]++;
 	}
+}
+
+void	ft_get_permutations(char perm[24][5])
+{
+	char	*digits;
+
+	digits = ft_generate_digits();
+	ft_get_permutations_loop(perm, digits);
+	free(digits);
 }
 /*
 int	main(void)

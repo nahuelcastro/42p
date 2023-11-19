@@ -10,11 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
 void	rush(char *data);
 
 int	main(int quant_args, char *args[])
 {
 	if (quant_args == 2)
 		rush(args[1]);
+	else
+	    write (2, "Error\n", 6);
 	return (0);
 }
