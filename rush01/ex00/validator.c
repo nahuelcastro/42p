@@ -70,8 +70,6 @@ int ft_are_valid_hor_lines(char *data, char perms[24][5], int *solution)
     int col;
     char *str_perm;
     char *str_perm_in;
-
-    printf("solution: %d %d %d %d\n", solution[0], solution[1], solution[2], solution[3]);
     line = 0;
     valid = 1;
     str_perm = malloc(sizeof(char) * 5);
@@ -121,17 +119,6 @@ int	ft_is_valid(char *data, char perms[24][5], int *solution, int col)
 	valid_dir_2 = ft_is_valid_line(observation_2, str_inv);
 
     free (str_inv);
-
-    // if solution is 0 9 16 18, debug
-    if (solution[0] == 0 && solution[1] == 9 && solution[2] == 16 && solution[3] == 18)
-    {
-        printf("col: %d\n", col);
-        printf("observation_1: %d\n", observation_1);
-        printf("observation_2: %d\n", observation_2);
-        printf("valid_dir_1: %d\n", valid_dir_1);
-        printf("valid_dir_2: %d\n", valid_dir_2);
-        printf("\n");
-    }
     if (valid_dir_1 && valid_dir_2 && col == 3)
         return ft_are_valid_hor_lines(data, perms, solution);
 

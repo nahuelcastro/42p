@@ -35,76 +35,34 @@ void	ft_print_solution(char permutations[24][5], int *solution)
         index_str++;
         ft_putchar('\n');
     }
-    printf("%s", "solution:::::");
-    printf("%d,", solution[0]);
-    printf("%d,", solution[1]);
-    printf("%d,", solution[2]);
-    printf("%d", solution[3]);
 }
 
-int	skyscrapper_bt(char *data, char permutations[24][5], int *solution, int col)
+int skyscrapper_bt(char *data, char permutations[24][5], int *solution, int col)
 {
-	int	success;
-	int n;
-
-	n = 4;
-	success = 0;
-	if (col >= n) //TODO verlo
-		return (0); // no se encontro solucion
-
-	while (solution[col] < 24 && !success)
-	{
-		//try with the next permutation option
-		solution[col] = solution[col] + 1;
-
-		//partial solution is valid
-		if (ft_is_valid(data, permutations, solution, col)) //falta pasarle el viewers y eso
-		{
-			if (col + 1 ==  n)
-            {
-                success = 1;
-                ft_print_solution(permutations, solution);
-            }
-            else {
-                success = skyscrapper_bt(data, permutations, solution, col + 1);
-            }
-		}
-	}
-
-	return success;
+    int success;
+    int n;
+    n = 4;
+    success = 0;
+    if (col >= n) // Llegamos al final de las columnas
+        return 1; // Encontramos una solución válida
+    solution[col] = -1; // Inicializamos el índice de la columna actual
+    while (solution[col] < 23 && !success)
+    {
+        solution[col]++; // Incrementamos para probar la siguiente permutación
+        // Verificamos si la solución parcial es válida
+        if (ft_is_valid(data, permutations, solution, col))
+        {
+            // Continuamos con la siguiente columna
+            success = skyscrapper_bt(data, permutations, solution, col + 1);
+        }
+    }
+    if (!success)
+    {
+        solution[col] = -1; // Restablecemos el índice al retroceder
+    }else
+    {
+        if (col == 0)
+            ft_print_solution(permutations, solution);
+    }
+    return success;
 }
-
-//int skyscrapper_bt(char *data, char permutations[24][5], int *solution, int col)
-//{
-//    int success;
-//    int n;
-//
-//    n = 4;
-//    success = 0;
-//    if (col >= n)
-//        return (0); // no se encontro solucion
-//
-//    while (solution[col] < 24 && !success)
-//    {
-//        // try with the next permutation option
-//        solution[col]++;
-//
-//        // partial solution is valid
-//        if (ft_is_valid(data, permutations, solution, col))
-//        {
-//            if (col + 1 == n)
-//            {
-//                // check if all columns are valid together
-//                success = ft_are_valid_hor_lines(data, permutations, solution);
-//                if (success)
-//                    ft_print_solution(permutations, solution);
-//            }
-//            else
-//            {
-//                success = skyscrapper_bt(data, permutations, solution, col + 1);
-//            }
-//        }
-//    }
-//
-//    return success;
-//}

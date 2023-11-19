@@ -42,6 +42,7 @@ int	rush(char *data)
 {
 	int		*solution;
 	char	permutations[24][5];
+    int success;
 
 	solution = (int *)malloc(4 * 4);
 	solution[0] = -1;
@@ -51,7 +52,9 @@ int	rush(char *data)
 	if (ft_is_error(data))
 		return (0);
 	ft_get_permutations(permutations);
-	skyscrapper_bt(data, permutations, solution, 0);
-	free (solution);
+	success = skyscrapper_bt(data, permutations, solution, 0);
+	if (!success)
+        write (1, "Not exist possible solution for this input", 42);
+    free (solution);
 	return (1);
 }
