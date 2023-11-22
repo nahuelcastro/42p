@@ -1,39 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matcastr <matcastr@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 20:02:45 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/22 18:27:02 by matcastr         ###   ########.fr       */
+/*   Created: 2023/11/22 17:38:35 by matcastr          #+#    #+#             */
+/*   Updated: 2023/11/22 17:52:14 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
 	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	j = 0;
+	while (dest[i])
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
 		i++;
 	}
-	return (0);
+	while (src[j] && j < nb)
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 /*
-#include <string.h>
-#include <stdio.h>
+#include<stdio.h>
+#include<string.h>
 int	main(void)
 {
-	char w1[] = "hovlnvajsha";
-	char w2[] = "holcfafdgsjh";
+	char w1[20] = "hola";
+	char w11[20] = "hola";
+	char w2[] = "123456";
 	unsigned int n = 4;
 
-	printf("%d\n", ft_strncmp(w1, w2, n));
-	printf("%d\n", strncmp(w1, w2, n));
+	printf("%s\n", ft_strncat(w1, w2, n));
+	printf("%s\n", strncat(w11, w2, n));
 	return (0);
 }
 */
