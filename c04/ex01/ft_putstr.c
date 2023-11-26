@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matcastr <matcastr@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: matcastr <matcastr@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 21:59:43 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/15 22:12:46 by matcastr         ###   ########.fr       */
+/*   Created: 2023/11/25 14:43:26 by matcastr          #+#    #+#             */
+/*   Updated: 2023/11/25 15:12:31 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include<stdio.h>*/
+#include <unistd.h>
 
-int	ft_str_is_numeric(char *str)
+void	ft_putstr(char *str)
 {
-	char	c;
-	int		i;
+	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
-		c = str[i];
-		if (!(c >= '0' && c <= '9'))
-			return (0);
+		write (1, &str[i], 1);
 		i++;
 	}
-	return (1);
 }
 /*
 int	main(void)
 {
-	char	*s;
-
-	s = "456456115356465454";
-	if (ft_str_is_numeric(s))
-		printf("%c", 'Y');
+	ft_putstr("hola amigo");
 	return (0);
-}*/
+}
+*/

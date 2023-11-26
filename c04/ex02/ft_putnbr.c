@@ -6,7 +6,7 @@
 /*   By: matcastr <matcastr@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 21:29:10 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/22 19:38:10 by matcastr         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:35:45 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_putnbr(int nb)
 	if (nb == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		return;
+		return ;
 	}
 	if (nb < 0)
 	{
@@ -38,12 +38,13 @@ void	ft_putnbr(int nb)
 	}
 	ft_putnbr_rec(nb / 10, nb % 10 + '0');
 }
+/*
 #include <limits.h>
 int	main(void)
 {
 	int n_min = INT_MIN;
 	int n_max = INT_MAX;
-	int n_x = -123456789;
+	int n_x = 0;
 
 	ft_putnbr(n_min);
 	write(1, "\n", 1);
@@ -52,3 +53,4 @@ int	main(void)
 	ft_putnbr(n_x);
 	return (0);
 }
+*/

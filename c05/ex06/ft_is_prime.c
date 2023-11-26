@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matcastr <matcastr@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: matcastr <matcastr@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 21:59:43 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/15 22:12:46 by matcastr         ###   ########.fr       */
+/*   Created: 2023/11/25 19:46:17 by matcastr          #+#    #+#             */
+/*   Updated: 2023/11/26 18:17:19 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include<stdio.h>*/
-
-int	ft_str_is_numeric(char *str)
+int	ft_is_prime(int nb)
 {
-	char	c;
-	int		i;
+	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = 2;
+	if (nb < 2)
+		return (0);
+	while (i < nb)
 	{
-		c = str[i];
-		if (!(c >= '0' && c <= '9'))
+		if (nb % i == 0)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 /*
+#include <stdio.h>
 int	main(void)
 {
-	char	*s;
-
-	s = "456456115356465454";
-	if (ft_str_is_numeric(s))
-		printf("%c", 'Y');
+	printf("5: %i\n", ft_is_prime(5));
+	int i = 1;
+	while (i < 48)
+	{
+		printf("%i: %i\n", i, ft_is_prime(i));
+		i++;
+	}
 	return (0);
-}*/
+}
+*/

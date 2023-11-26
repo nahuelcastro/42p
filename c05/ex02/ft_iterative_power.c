@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matcastr <matcastr@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: matcastr <matcastr@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 21:59:43 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/15 22:12:46 by matcastr         ###   ########.fr       */
+/*   Created: 2023/11/25 17:49:34 by matcastr          #+#    #+#             */
+/*   Updated: 2023/11/25 18:10:25 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include<stdio.h>*/
-
-int	ft_str_is_numeric(char *str)
+int	ft_iterative_power(int nb, int power)
 {
-	char	c;
-	int		i;
+	int	i;
+	int	res;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = 1;
+	res = nb;
+	if (power <= 0)
+		return (power == 0);
+	while (i < power)
 	{
-		c = str[i];
-		if (!(c >= '0' && c <= '9'))
-			return (0);
+		res *= nb;
 		i++;
 	}
-	return (1);
+	return (res);
 }
 /*
+#include <stdio.h>
 int	main(void)
 {
-	char	*s;
-
-	s = "456456115356465454";
-	if (ft_str_is_numeric(s))
-		printf("%c", 'Y');
+	printf("%i", ft_iterative_power(0, -1));
 	return (0);
-}*/
+}
+*/

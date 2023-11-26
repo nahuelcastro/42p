@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matcastr <matcastr@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: matcastr <matcastr@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 21:59:43 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/15 22:12:46 by matcastr         ###   ########.fr       */
+/*   Created: 2023/11/25 17:34:12 by matcastr          #+#    #+#             */
+/*   Updated: 2023/11/25 21:05:54 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include<stdio.h>*/
-
-int	ft_str_is_numeric(char *str)
+int	ft_iterative_factorial(int nb)
 {
-	char	c;
-	int		i;
+	int	i;
+	int	res;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = 1;
+	res = 1;
+	if (nb < 0)
+		return (0);
+	if (nb == 0)
+		return (1);
+	while (i <= nb)
 	{
-		c = str[i];
-		if (!(c >= '0' && c <= '9'))
-			return (0);
+		res *= i;
 		i++;
 	}
-	return (1);
+	return (res);
 }
 /*
+#include <stdio.h>
 int	main(void)
 {
-	char	*s;
-
-	s = "456456115356465454";
-	if (ft_str_is_numeric(s))
-		printf("%c", 'Y');
+	printf("%i", ft_iterative_factorial(0));
 	return (0);
-}*/
+}
+*/
