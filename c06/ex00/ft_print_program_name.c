@@ -6,7 +6,7 @@
 /*   By: matcastr <matcastr@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:11:36 by matcastr          #+#    #+#             */
-/*   Updated: 2023/11/26 13:17:07 by matcastr         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:55:21 by matcastr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_putstr(char *str)
 		write (1, str, 1);
 		str++;
 	}
+	write(1, "\n", 1);
 }
 
 int	main(int k, char **args)
